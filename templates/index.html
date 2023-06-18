@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>テキスト感情分類</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <h1>テキスト感情分類</h1>
+    <form action="/predict" method="POST">
+      <label for="text-input">テキスト(英語)を入力してください:</label><br>
+      <textarea id="text-input" name="text" rows="4" cols="50"></textarea><br><br>
+      <input type="submit" value="分類する">
+    </form>
+  </body>
+</html>

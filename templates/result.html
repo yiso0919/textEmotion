@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>テキスト感情分類結果</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .result-container {
+            text-align: center;
+        }
+
+        .positive {
+            color: orange;
+        }
+
+        .negative {
+            color: aqua;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="result-container">
+        <h1>テキスト感情分類結果</h1>
+        <p>positive or negative</p>
+        {% if predicted_label == 'positive' %}
+            <p class="positive">{{ predicted_label }}</p>
+        {% elif predicted_label == 'negative' %}
+            <p class="negative">{{ predicted_label }}</p>
+        {% else %}
+            <p>{{ predicted_label }}</p>
+        {% endif %}
+    </div>
+  </body>
+</html>
