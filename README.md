@@ -1,0 +1,2 @@
+# textEmotion
+テキストボックスに入力した英文をpositiveかnegativeか分類するWebアプリケーションです。
