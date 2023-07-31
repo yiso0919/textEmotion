@@ -53,24 +53,27 @@ def preProcessing(test_text):
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # テキストの取得
-    test_text = request.form['text']
-    # テキストの前処理
-    test_text = preProcessing(test_text)
+    if request.method == 'POST':
+        # テキストの取得
+        test_text = request.form['text']
+        # テキストの前処理
+        test_text = preProcessing(test_text)
 
-    with open('svc_model.pkl', 'rb') as file:
-        classifier = pickle.load(file)
-    with open('svc_vectorizer.pkl', 'rb') as file:
-        vectorizer = pickle.load(file)
+        with open('svc_model.pkl', 'rb') as file:
+            classifier = pickle.load(file)
+        with open('svc_vectorizer.pkl', 'rb') as file:
+            vectorizer = pickle.load(file)
 
-    # 特徴ベクトル化
-    test_features = vectorizer.transform([test_text])
+        # 特徴ベクトル化
+        test_features = vectorizer.transform([test_text])
 
-    # 予測
-    predicted_label = classifier.predict(test_features)[0]
+        # 予測
+        predicted_label = classifier.predict(test_features)[0]
 
-    # 結果ページに予測結果を渡して表示
-    return render_template('result.html', predicted_label=predicted_label)
+        # 結果ページに予測結果を渡して表示
+        return render_template('result.html', predicted_label=predicted_label)
+    else:
+        return render_template('index.html')
 
 
 if __name__ == '__main__':
